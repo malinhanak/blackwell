@@ -1,0 +1,9 @@
+{
+  "name": "dicetrax",
+  "version": "0.1.0",
+  "description": "Track dice rolls",
+  "main": "index.js",
+  "repository": "git@gitlab.com:anfl/dicetrax.git",
+  "author": "Cygni Syd",
+  "license": "MIT"
+}
