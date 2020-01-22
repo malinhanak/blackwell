@@ -1,19 +1,15 @@
 # README
 
-## Git commands
+## Getting started
 
-### Download repository
+***Install dependencies***
+Run `yarn install` or `npm install`.
 
-```git clone git@gitlab.com:anfl/dicetrax.git
-cd dicetrax
-```
+***Development***
+Run `yarn run dev` or `npm run dev`
 
-### Push an existing folder
+***Development with devserver + hmr***
+Run `yarn run devserver` or `npm run devserver`
 
-```cd existing_folder
-git init
-git remote add origin git@gitlab.com:anfl/dicetrax.git
-git add .
-git commit -m "your commit message"
-git push -u origin master
-```
+***Production***
+Run `yarn run build` or `npm run build`
