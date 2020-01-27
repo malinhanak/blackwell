@@ -8,5 +8,6 @@
   "proseWrap": "always",
   "arrowParens": "always",
   "tabWidth": 2,
-  "endOfLine": "crlf"
+  "endOfLine": "crlf",
+  "editor.formatOnSave": true
 }
