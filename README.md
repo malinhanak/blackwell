@@ -10,9 +10,9 @@ Run `npm install`.
 
 Run `npm run dev`
 
-#### Development with devserver + hmr
+#### Development with liveserver + hmr
 
-Run `npm run devserver`
+Run `npm run watch`
 
 #### Production
 
