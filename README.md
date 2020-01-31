@@ -3,13 +3,17 @@
 ## Getting started
 
 #### Install dependencies
-Run `yarn install` or `npm install`.
+
+Run `npm install`.
 
 #### Development
-Run `yarn run dev` or `npm run dev`
+
+Run `npm run dev`
 
 #### Development with devserver + hmr
-Run `yarn run devserver` or `npm run devserver`
+
+Run `npm run devserver`
 
 #### Production
-Run `yarn run build` or `npm run build`
+
+Run `npm run build`
