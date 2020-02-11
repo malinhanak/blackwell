@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const IconicButton = ({ children, className, iconType, icon }) => {
+const IconicButton = ({ children, className, iconType, icon, onClick }) => {
   return (
-    <button className={className}>
+    <button className={className} onClick={onClick}>
       {iconType ? <FontAwesomeIcon icon={[iconType, icon]} /> : <FontAwesomeIcon icon={icon} />}
       {children}
     </button>
@@ -32,7 +32,7 @@ export const ButtonWithIcon = styled(IconicButton)`
 /* EXAMPLE USE
   import { ButtonWithIcon } from './lib/styles';
 
-  <ButtonWithIcon iconType='fab' icon='google'>
+  <ButtonWithIcon iconType='fab' icon='google' onClick={() => console.log('Do something fun!')}>
     Sign-in with Google
   </ButtonWithIcon>
 */
