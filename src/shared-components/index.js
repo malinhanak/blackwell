@@ -1,1 +1,1 @@
-// TODO: Add exports
+export { Input } from './Input';
