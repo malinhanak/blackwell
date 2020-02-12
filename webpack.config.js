@@ -22,24 +22,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components|__test__|\.test)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  debug: false,
-                  useBuiltIns: 'usage',
-                  corejs: 3,
-                },
-              ],
-              '@babel/preset-react',
-            ],
-          },
-        },
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
@@ -60,6 +45,7 @@ module.exports = {
       },
     ],
   },
+  resolve: { extensions: ['*', '.js', '.jsx'] },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(PATH_SOURCE, './index.html'),
