@@ -13,6 +13,9 @@
     "test": "jest --watchAll"
   },
   "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTest.js"
+    ],
     "collectCoverage": false,
     "collectCoverageFrom": [
       "src/*.{js,jsx}",
