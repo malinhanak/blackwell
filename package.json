@@ -10,10 +10,13 @@
     "build": "webpack --mode=production --config webpack.config.js",
     "dev": "webpack --mode=development --config webpack.config.js",
     "watch": "webpack-dev-server --mode=development --config webpack.config.js",
-    "test": "jest --watch"
+    "test": "jest --watchAll"
   },
   "jest": {
-    "collectCoverage": true,
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTest.js"
+    ],
+    "collectCoverage": false,
     "collectCoverageFrom": [
       "src/*.{js,jsx}",
       "!/node_modules/**",
