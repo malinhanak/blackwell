@@ -1,1 +1,1 @@
-// TODO: Add exports
+export { Input, InputWrapper } from './Input';
