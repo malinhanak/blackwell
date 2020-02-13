@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Input, InputWithDatalist } from '../../shared-components';
-import { Form, DiceButton } from '../../lib/styles';
+import { Form, DiceButton, GeneralButton } from '../../lib/styles';
 
 export const CreateNewGame = (props) => {
   const [diceType, setDiceType] = useState(null);
@@ -73,7 +73,7 @@ export const CreateNewGame = (props) => {
           onClick={() => setDiceType('numbers')}
         />
       </div>
-      <button type='submit'>Skapa spel</button>
+      <GeneralButton type='submit'>Starta spel</GeneralButton>
     </Form>
   );
 };
