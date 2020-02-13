@@ -16,13 +16,6 @@ export const signInWithGoogle = () => {
             .set({
               charName: credentials.user.displayName,
             });
-
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          const token = result.credential.accessToken;
-          // The signed-in user info.
-          const user = result.user;
-          // ...
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -42,7 +35,6 @@ export const createAcccountWithEmailAndPassword = (loginCredentials) => {
     .auth()
     .createUserWithEmailAndPassword(loginCredentials.email, loginCredentials.password)
     .then((credentials) => {
-      console.log(credentials.user.uid, credentials.user.displayName);
       db.collection('users')
         .doc(credentials.user.uid)
         .set({
