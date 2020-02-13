@@ -4,14 +4,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Button = ({ className, onClick, icon, label, activeClass }) => {
   return (
-    <div>
-      <label>{label}</label>
+    <DiceContainer>
+      <DiceLabel>{label}</DiceLabel>
       <button className={className} onClick={onClick}>
         <FontAwesomeIcon className={activeClass ? 'chosen' : ''} icon={icon} size='10x' />
       </button>
-    </div>
+    </DiceContainer>
   );
 };
+
+const DiceContainer = styled.article`
+  min-width: 100px;
+  max-width: 117px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+`;
+
+const DiceLabel = styled.label`
+  font-size: 1.375rem;
+  color: ${(props) => props.color || props.theme.colors.main};
+  margin-bottom: 0;
+  display: flex;
+`;
 
 export const DiceButton = styled(Button)`
   background: transparent;
@@ -22,20 +38,5 @@ export const DiceButton = styled(Button)`
 
   .chosen {
     color: ${(props) => props.theme.colors.accent};
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: center;
-  }
-
-  label {
-    font-size: 1.375rem;
-    color: ${(props) => props.color || props.theme.colors.main};
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
   }
 `;
