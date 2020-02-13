@@ -70,5 +70,6 @@ export const InputWrapper = styled.div`
   input {
     width: 100%;
     margin-right: 0;
+    text-align: center;
   }
 `;
