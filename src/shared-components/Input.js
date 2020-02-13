@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { InputError } from '../lib/helpers';
 import { InputStyle, InputWrapper } from '../lib/styles';
 
-export const Input = React.forwardRef((props, ref) => {
+export const Input = forwardRef((props, ref) => {
   const { label, error, width, name } = props;
   return (
     <InputWrapper
