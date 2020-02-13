@@ -19,7 +19,9 @@ export const App = () => {
       <ButtonWithIcon iconType='fab' icon='google' onClick={() => signInWithGoogle()}>
         Sign in with Google
       </ButtonWithIcon>
-      <SignInForm submitHandler={(credentials) => signInWithEmailAndPassword(credentials)} />
+      <SignInForm
+        submitHandler={(loginCredentials) => signInWithEmailAndPassword(loginCredentials)}
+      />
       <CreateAccountForm submitHandler={() => createAcccountWithEmailAndPassword()} />
       <button onClick={() => signOut()}>Sign out</button>
     </div>
