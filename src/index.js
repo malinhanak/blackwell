@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from './lib/styles';
 
-import { AuthProvider } from './App';
+import { AuthProvider } from './context/authContext';
 import './lib';
 import { App } from './App';
 
