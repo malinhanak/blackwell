@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 
 import { Input, InputWithDatalist } from '../../shared-components';
@@ -57,23 +58,27 @@ export const CreateNewGame = (props) => {
         })}
         error={errors.diceNumber}
       />
-      <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 auto;' }}>
+      <DiceContainer>
         <DiceButton
           label='Prickar'
-          type='button'
           activeClass={diceType === 'dots' ? true : false}
           icon='dice-five'
           onClick={() => setDiceType('dots')}
         />
         <DiceButton
           label='Siffror'
-          type='button'
           activeClass={diceType === 'numbers' ? true : false}
           icon='dice-five'
           onClick={() => setDiceType('numbers')}
         />
-      </div>
+      </DiceContainer>
       <GeneralButton type='submit'>Starta spel</GeneralButton>
     </Form>
   );
 };
+
+const DiceContainer = styled.article`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+`;
