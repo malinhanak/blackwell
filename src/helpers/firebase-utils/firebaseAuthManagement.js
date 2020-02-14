@@ -59,7 +59,7 @@ export const signInWithEmailAndPassword = (loginCredentials) => {
     });
 };
 
-export const signOut = () => {
+export const signOutFirebaseApps = () => {
   firebase
     .auth()
     .signOut()

@@ -5,7 +5,7 @@ import {
   createAcccountWithEmailAndPassword,
   signInWithGoogle,
   signInWithEmailAndPassword,
-  signOut,
+  signOutFirebaseApps,
 } from './helpers/firebase-utils/firebaseAuthManagement';
 import { ButtonWithIcon } from './lib/styles';
 import { SignInForm, CreateAccountForm } from './components/login';
@@ -23,7 +23,7 @@ export const App = () => {
         submitHandler={(loginCredentials) => signInWithEmailAndPassword(loginCredentials)}
       />
       <CreateAccountForm submitHandler={() => createAcccountWithEmailAndPassword()} />
-      <button onClick={() => signOut()}>Sign out</button>
+      <button onClick={() => signOutFirebaseApps()}>Sign out</button>
     </div>
   );
 };
