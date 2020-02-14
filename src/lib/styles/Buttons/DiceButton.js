@@ -6,7 +6,7 @@ const Button = ({ className, onClick, icon, label, activeClass }) => {
   return (
     <DiceContainer>
       <DiceLabel>{label}</DiceLabel>
-      <button className={className} onClick={onClick}>
+      <button className={className} onClick={onClick} type='button'>
         <FontAwesomeIcon className={activeClass ? 'chosen' : ''} icon={icon} size='10x' />
       </button>
     </DiceContainer>
