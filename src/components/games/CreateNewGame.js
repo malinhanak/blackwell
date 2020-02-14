@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Input, InputWithDatalist } from '../../shared-components';
 import { Form, DiceButton, GeneralButton } from '../../lib/styles';
 
-export const CreateNewGame = (props) => {
+export const CreateNewGame = () => {
   const [diceType, setDiceType] = useState(null);
   const { handleSubmit, register, errors, reset } = useForm({
     mode: 'onChange',
