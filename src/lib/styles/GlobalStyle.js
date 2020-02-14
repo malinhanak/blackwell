@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: 'Quantico';
+    color: ${(props) => props.theme.colors.font};
     background-color: rgba(255, 255, 255, 0.6)
   }
 `;

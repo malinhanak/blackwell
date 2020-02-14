@@ -1,1 +1,1 @@
-// TODO: Add exports
+export { CreateNewGame } from './CreateNewGame';
