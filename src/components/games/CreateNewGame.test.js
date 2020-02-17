@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent, cleanup, waitForElement } from 'test-utils';
+import { act } from 'react-dom/test-utils';
 import { CreateNewGame } from './CreateNewGame';
 
 afterEach(cleanup);
@@ -19,46 +20,48 @@ describe('Testing form functions', () => {
     expect(inputDiceNo.value).toBe('');
   });
 
-  it.skip('onChange should trigger value change in input "Title"', async () => {
+  it('onChange should trigger value change in input "Title"', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
-    const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
-    const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
     // Act
+    fireEvent.change(inputTitle, { target: { value: 'Awesome Game' } });
 
     // Assert
-    expect(inputTitle.value).toBe('');
-    expect(inputGame.value).toBe('');
-    expect(inputDiceNo.value).toBe('');
+    expect(inputTitle.value).toBe('Awesome Game');
   });
 
-  it.skip('onChange should trigger value change in input "Ange spel"', async () => {
+  it('onChange should trigger value change in input "Ange spel"', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
-    const inputTitle = await waitForElement(() => getByLabelText('Titel'));
     const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
-    const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
     // Act
+    fireEvent.change(inputGame, { target: { value: 'Settlers of Cata' } });
 
     // Assert
-    expect(inputTitle.value).toBe('');
-    expect(inputGame.value).toBe('');
-    expect(inputDiceNo.value).toBe('');
+    expect(inputGame.value).toBe('Settlers of Cata');
   });
 
-  it.skip('onChange should trigger value change in input "Antal tärningar"', async () => {
+  it('onChange should trigger value change in input "Antal tärningar"', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
-    const inputTitle = await waitForElement(() => getByLabelText('Titel'));
-    const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
-    // Act
+
+    fireEvent.change(inputDiceNo, { target: { value: '2' } });
 
     // Assert
-    expect(inputTitle.value).toBe('');
-    expect(inputGame.value).toBe('');
-    expect(inputDiceNo.value).toBe('');
+    expect(inputDiceNo.value).toBe('2');
+  });
+
+  it.skip('should validate value', async () => {
+    const { getByLabelText } = render(<CreateNewGame />);
+    // Arrange
+    const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
+
+    fireEvent.change(inputDiceNo, { target: { value: 'a' } });
+
+    // Assert
+    expect(inputDiceNo.value).toBe('2');
   });
 
   it.skip('onSubmit to have been called', async () => {
@@ -74,7 +77,7 @@ describe('Testing form functions', () => {
     expect(inputTitle.value).toBe('');
     expect(inputGame.value).toBe('');
     expect(inputDiceNo.value).toBe('');
-    // fireEvent.click(getByText('Sign-in'));
+    // fireEvent.click(getByText('Starta spel'));
     // expect(onClick).toHaveBeenCalled();
   });
 });
