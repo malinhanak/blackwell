@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Input, InputWithDatalist } from '../../shared-components';
 import { Form, DiceButton, GeneralButton } from '../../lib/styles';
 
-export const CreateNewGame = () => {
+function CreateNewGame() {
   const [diceType, setDiceType] = useState(null);
   const { handleSubmit, register, errors, reset } = useForm({
     mode: 'onChange',
@@ -75,10 +75,12 @@ export const CreateNewGame = () => {
       <GeneralButton type='submit'>Starta spel</GeneralButton>
     </Form>
   );
-};
+}
 
 const DiceContainer = styled.article`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
 `;
+
+export default CreateNewGame;
