@@ -62,7 +62,7 @@ describe('Testing form functions', () => {
 
   it('should validate value', async () => {
     const onSubmit = jest.fn();
-    const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
     // Arrange
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
@@ -80,7 +80,7 @@ describe('Testing form functions', () => {
 
   it('onSubmit should not call if inputs are empty strings', async () => {
     const onSubmit = jest.fn();
-    const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
@@ -103,7 +103,7 @@ describe('Testing form functions', () => {
 
   it('onSubmit should not call if inputs are filled it but has wrong value type', async () => {
     const onSubmit = jest.fn();
-    const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
@@ -126,7 +126,7 @@ describe('Testing form functions', () => {
 
   it('onSubmit to have been called', async () => {
     const onSubmit = jest.fn();
-    const { getByText, getByLabelText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByText, getByLabelText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
