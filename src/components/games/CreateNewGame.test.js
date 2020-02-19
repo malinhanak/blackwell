@@ -3,9 +3,8 @@ import { render, fireEvent, cleanup, waitForElement } from 'test-utils';
 import { act } from 'react-dom/test-utils';
 import { CreateNewGame } from './CreateNewGame';
 
-afterEach(cleanup);
-
 describe('Testing form functions', () => {
+  afterEach(cleanup);
   it('All inputs should initially be empty strings', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
@@ -25,7 +24,9 @@ describe('Testing form functions', () => {
     // Arrange
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
     // Act
-    fireEvent.change(inputTitle, { target: { value: 'Awesome Game' } });
+    await act(async () => {
+      fireEvent.change(inputTitle, { target: { value: 'Awesome Game' } });
+    });
 
     // Assert
     expect(inputTitle.value).toBe('Awesome Game');
@@ -36,7 +37,9 @@ describe('Testing form functions', () => {
     // Arrange
     const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
     // Act
-    fireEvent.change(inputGame, { target: { value: 'Settlers of Cata' } });
+    await act(async () => {
+      fireEvent.input(inputGame, { target: { value: 'Settlers of Cata' } });
+    });
 
     // Assert
     expect(inputGame.value).toBe('Settlers of Cata');
@@ -47,37 +50,95 @@ describe('Testing form functions', () => {
     // Arrange
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
 
-    fireEvent.change(inputDiceNo, { target: { value: '2' } });
+    await act(async () => {
+      fireEvent.input(inputDiceNo, { target: { value: '2' } });
+    });
 
     // Assert
     expect(inputDiceNo.value).toBe('2');
   });
 
-  it.skip('should validate value', async () => {
-    const { getByLabelText } = render(<CreateNewGame />);
+  it('should validate value', async () => {
+    const onSubmit = jest.fn();
+    const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
     // Arrange
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
+    const button = await waitForElement(() => getByText('Starta spel'));
+
+    // Act
 
     fireEvent.change(inputDiceNo, { target: { value: 'a' } });
+    await act(async () => {
+      fireEvent.click(button);
+    });
+    debug();
 
     // Assert
-    expect(inputDiceNo.value).toBe('2');
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 
-  it.skip('onSubmit to have been called', async () => {
-    //const onClick = jest.fn();
-    const { getByLabelText } = render(<CreateNewGame />);
+  it('onSubmit should not call if inputs are empty strings', async () => {
+    const onSubmit = jest.fn();
+    const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
     // Arrange
+    const button = await waitForElement(() => getByText('Starta spel'));
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
     const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
     // Act
+    fireEvent.change(inputTitle, { target: { value: '' } });
+    fireEvent.input(inputGame, { target: { value: '' } });
+    fireEvent.input(inputDiceNo, { target: { value: '' } });
+
+    await act(async () => {
+      fireEvent.click(button);
+    });
+    // Assert
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
+  it('onSubmit should not call if inputs are filled it but has wrong value type', async () => {
+    const onSubmit = jest.fn();
+    const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+    // Arrange
+    const button = await waitForElement(() => getByText('Starta spel'));
+    const inputTitle = await waitForElement(() => getByLabelText('Titel'));
+    const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
+    const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
+    // Act
+    fireEvent.change(inputTitle, { target: { value: 'New Game' } });
+    fireEvent.input(inputGame, { target: { value: 'Settlers of Cata' } });
+    fireEvent.input(inputDiceNo, { target: { value: 'a' } });
+
+    await act(async () => {
+      fireEvent.click(button);
+    });
+    // Assert
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
+  it('onSubmit to have been called', async () => {
+    const onSubmit = jest.fn();
+    const { getByText, getByLabelText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+
+    // Arrange
+    const button = await waitForElement(() => getByText('Starta spel'));
+    const inputTitle = await waitForElement(() => getByLabelText('Titel'));
+    const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
+    const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
+
+    // Act
+
+    fireEvent.change(inputTitle, { target: { value: 'Awesome Game' } });
+    fireEvent.input(inputGame, { target: { value: 'Settlers of Cata' } });
+    fireEvent.input(inputDiceNo, { target: { value: '2' } });
+
+    await act(async () => {
+      fireEvent.click(button);
+    });
+    debug();
 
     // Assert
-    expect(inputTitle.value).toBe('');
-    expect(inputGame.value).toBe('');
-    expect(inputDiceNo.value).toBe('');
-    // fireEvent.click(getByText('Starta spel'));
-    // expect(onClick).toHaveBeenCalled();
+    expect(onSubmit).toHaveBeenCalled();
   });
 });
