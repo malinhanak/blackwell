@@ -23,6 +23,7 @@ describe('Testing form functions', () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
+
     // Act
     await act(async () => {
       fireEvent.change(inputTitle, { target: { value: 'Awesome Game' } });
@@ -36,6 +37,7 @@ describe('Testing form functions', () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
     const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
+
     // Act
     await act(async () => {
       fireEvent.input(inputGame, { target: { value: 'Settlers of Cata' } });
@@ -61,17 +63,16 @@ describe('Testing form functions', () => {
   it('should validate value', async () => {
     const onSubmit = jest.fn();
     const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+
     // Arrange
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
     const button = await waitForElement(() => getByText('Starta spel'));
 
     // Act
-
     fireEvent.change(inputDiceNo, { target: { value: 'a' } });
     await act(async () => {
       fireEvent.click(button);
     });
-    debug();
 
     // Assert
     expect(onSubmit).not.toHaveBeenCalled();
@@ -80,11 +81,13 @@ describe('Testing form functions', () => {
   it('onSubmit should not call if inputs are empty strings', async () => {
     const onSubmit = jest.fn();
     const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
     const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
+
     // Act
     fireEvent.change(inputTitle, { target: { value: '' } });
     fireEvent.input(inputGame, { target: { value: '' } });
@@ -93,6 +96,7 @@ describe('Testing form functions', () => {
     await act(async () => {
       fireEvent.click(button);
     });
+
     // Assert
     expect(onSubmit).not.toHaveBeenCalled();
   });
@@ -100,11 +104,13 @@ describe('Testing form functions', () => {
   it('onSubmit should not call if inputs are filled it but has wrong value type', async () => {
     const onSubmit = jest.fn();
     const { getByLabelText, getByText, debug } = render(<CreateNewGame submitHandler={onSubmit} />);
+
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
     const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
+
     // Act
     fireEvent.change(inputTitle, { target: { value: 'New Game' } });
     fireEvent.input(inputGame, { target: { value: 'Settlers of Cata' } });
@@ -113,6 +119,7 @@ describe('Testing form functions', () => {
     await act(async () => {
       fireEvent.click(button);
     });
+
     // Assert
     expect(onSubmit).not.toHaveBeenCalled();
   });
@@ -136,7 +143,6 @@ describe('Testing form functions', () => {
     await act(async () => {
       fireEvent.click(button);
     });
-    debug();
 
     // Assert
     expect(onSubmit).toHaveBeenCalled();
