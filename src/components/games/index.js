@@ -1,1 +1,1 @@
-export { CreateNewGame } from './CreateNewGame';
+export { default as CreateNewGame } from './CreateNewGame';

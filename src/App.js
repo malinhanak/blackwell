@@ -1,13 +1,20 @@
-import React from 'react';
-import { CreateNewGame } from './components/games';
+import React, { lazy, Suspense } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { LoadingOverlay } from './assets/Loading';
+
+// Lazy Load imports.
+const CreateNewGame = lazy(() => import('./components/games/CreateNewGame'));
 
 export const App = () => {
   const createNewGame = (data) => console.log(data);
 
   return (
-    <>
-      <h1>Hello DiceTrax!</h1>
-      <CreateNewGame submitHandler={createNewGame} />
-    </>
+    <Suspense fallback={<LoadingOverlay />}>
+      <Switch>
+        <Route exact path='/' render={() => <h1>Hello DiceTrax!</h1>} />
+        <Route path='/new-game' component={CreateNewGame} />
+        <Route render={() => <h1>404 page</h1>} />
+      </Switch>
+    </Suspense>
   );
 };
