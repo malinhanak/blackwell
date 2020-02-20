@@ -3,9 +3,9 @@ import { render, fireEvent, cleanup, waitForElement } from 'test-utils';
 import { act } from 'react-dom/test-utils';
 import { CreateNewGame } from './CreateNewGame';
 
-describe('Testing form functions', () => {
+describe('Testing the form functions and methods of CreatNewGame component which returns a form.', () => {
   afterEach(cleanup);
-  it('All inputs should initially be empty strings', async () => {
+  it('is expected that all input values on render are empty string', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
@@ -19,7 +19,7 @@ describe('Testing form functions', () => {
     expect(inputDiceNo.value).toBe('');
   });
 
-  it('onChange should trigger value change in input "Title"', async () => {
+  it('should trigger onChange when typing in input "Title" to update input value', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
     const inputTitle = await waitForElement(() => getByLabelText('Titel'));
@@ -33,7 +33,7 @@ describe('Testing form functions', () => {
     expect(inputTitle.value).toBe('Awesome Game');
   });
 
-  it('onChange should trigger value change in input "Ange spel"', async () => {
+  it('should trigger onChange when typing in input "Ange spel" to update input value', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
     const inputGame = await waitForElement(() => getByLabelText('Ange spel'));
@@ -47,7 +47,7 @@ describe('Testing form functions', () => {
     expect(inputGame.value).toBe('Settlers of Cata');
   });
 
-  it('onChange should trigger value change in input "Antal tärningar"', async () => {
+  it('should trigger onChange when typing in input "Antal tärningar" to update input value', async () => {
     const { getByLabelText } = render(<CreateNewGame />);
     // Arrange
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
@@ -60,7 +60,7 @@ describe('Testing form functions', () => {
     expect(inputDiceNo.value).toBe('2');
   });
 
-  it('should validate value', async () => {
+  it('should not call onSubmit if validation returned false', async () => {
     const onSubmit = jest.fn();
     const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
@@ -78,7 +78,7 @@ describe('Testing form functions', () => {
     expect(onSubmit).not.toHaveBeenCalled();
   });
 
-  it('onSubmit should not call if inputs are empty strings', async () => {
+  it('should not call onSubmit if any input value are an empty string', async () => {
     const onSubmit = jest.fn();
     const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
@@ -101,7 +101,7 @@ describe('Testing form functions', () => {
     expect(onSubmit).not.toHaveBeenCalled();
   });
 
-  it('onSubmit should not call if inputs are filled it but has wrong value type', async () => {
+  it('should not call onSubmit if any input value is an empty string or incorrect.', async () => {
     const onSubmit = jest.fn();
     const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
@@ -124,7 +124,7 @@ describe('Testing form functions', () => {
     expect(onSubmit).not.toHaveBeenCalled();
   });
 
-  it('onSubmit to have been called', async () => {
+  it('should call onSubmit form method when submit button is clicked and all inputs are validated true.', async () => {
     const onSubmit = jest.fn();
     const { getByText, getByLabelText } = render(<CreateNewGame submitHandler={onSubmit} />);
 
