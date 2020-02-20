@@ -11,6 +11,7 @@ export const App = () => {
       <Switch>
         <Route exact path='/' render={() => <h1>Hello DiceTrax!</h1>} />
         <Route path='/new-game' component={CreateNewGame} />
+        <Route render={() => <h1>404 page</h1>} />
       </Switch>
     </Suspense>
   );
