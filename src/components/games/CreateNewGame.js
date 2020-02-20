@@ -5,20 +5,12 @@ import { useForm } from 'react-hook-form';
 import { Input, InputWithDatalist } from '../../shared-components';
 import { Form, DiceButton, GeneralButton } from '../../lib/styles';
 
-function CreateNewGame() {
+function CreateNewGame({ submitHandler }) {
   const [diceType, setDiceType] = useState(null);
   const { handleSubmit, register, errors, reset } = useForm({
     mode: 'onChange',
   });
 
-  const createNewGame = (data) => {
-    console.log(data);
-    reset({
-      title: '',
-      gameType: '',
-      diceNumber: '',
-    });
-  };
   const dataSource = [
     'Settlers',
     'Catan',
@@ -32,7 +24,7 @@ function CreateNewGame() {
   useEffect(() => {}, [diceType]);
 
   return (
-    <Form onSubmit={handleSubmit(createNewGame)}>
+    <Form onSubmit={handleSubmit(submitHandler)}>
       <Input
         type='text'
         name='title'
