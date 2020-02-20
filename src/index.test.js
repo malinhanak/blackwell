@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, cleanup, waitForElement } from 'test-utils';
 
-import { App } from './App';
+import App from './App';
 
 describe('test app', () => {
   test('test', async () => {
