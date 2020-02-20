@@ -16,7 +16,7 @@ export const Input = forwardRef((props, ref) => {
           {label} {error && error.type === 'required' && <span className='required'>*</span>}
         </label>
       )}
-      <InputStyle className={error && 'error'} ref={ref} {...props} />
+      <InputStyle id={name} className={error && 'error'} ref={ref} {...props} />
       <InputError error={error} />
     </InputWrapper>
   );
