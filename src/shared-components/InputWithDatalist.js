@@ -16,7 +16,13 @@ export const InputWithDatalist = forwardRef((props, ref) => {
           {label} {error && error.type === 'required' && <span className='required'>*</span>}
         </label>
       )}
-      <InputStyle className={`${error && 'error'}`} list='input-list' ref={ref} {...props} />
+      <InputStyle
+        id={name}
+        className={`${error && 'error'}`}
+        list='input-list'
+        ref={ref}
+        {...props}
+      />
       <Datalist id='input-list'>
         {listArray.map((item) => (
           <option key={item} value={item} />

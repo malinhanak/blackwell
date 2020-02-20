@@ -6,6 +6,8 @@ import { LoadingOverlay } from './assets/Loading';
 const CreateNewGame = lazy(() => import('./components/games/CreateNewGame'));
 
 export const App = () => {
+  const createNewGame = (data) => console.log(data);
+
   return (
     <Suspense fallback={<LoadingOverlay />}>
       <Switch>

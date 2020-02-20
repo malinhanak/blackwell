@@ -52,7 +52,9 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(PATH_SOURCE, './index.html'),
