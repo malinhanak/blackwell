@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 
 import { Input, InputWithDatalist } from '../../shared-components';
 import { Form, DiceButton, GeneralButton } from '../../lib/styles';
+import * as m from '../../helpers/firebase-utils/submitHandler';
 
-function CreateNewGame({ submitHandler }) {
+function CreateNewGame() {
   const [diceType, setDiceType] = useState(null);
   const { handleSubmit, register, errors, reset } = useForm({
     mode: 'onChange',
@@ -24,7 +25,7 @@ function CreateNewGame({ submitHandler }) {
   useEffect(() => {}, [diceType]);
 
   return (
-    <Form onSubmit={handleSubmit(submitHandler)}>
+    <Form onSubmit={handleSubmit(m.submitHandler)}>
       <Input
         type='text'
         name='title'

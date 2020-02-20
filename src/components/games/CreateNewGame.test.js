@@ -1,7 +1,12 @@
 import React from 'react';
 import { render, fireEvent, cleanup, waitForElement } from 'test-utils';
 import { act } from 'react-dom/test-utils';
-import { CreateNewGame } from './CreateNewGame';
+import CreateNewGame from './CreateNewGame';
+import * as m from '../../helpers/firebase-utils/submitHandler';
+
+jest.mock('../../helpers/firebase-utils/submitHandler', () => ({
+  submitHandler: jest.fn(),
+}));
 
 describe('Testing the form functions and methods of CreatNewGame component which returns a form.', () => {
   afterEach(cleanup);
@@ -61,8 +66,7 @@ describe('Testing the form functions and methods of CreatNewGame component which
   });
 
   it('should not call onSubmit if validation returned false', async () => {
-    const onSubmit = jest.fn();
-    const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByLabelText, getByText } = render(<CreateNewGame />);
 
     // Arrange
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
@@ -75,12 +79,11 @@ describe('Testing the form functions and methods of CreatNewGame component which
     });
 
     // Assert
-    expect(onSubmit).not.toHaveBeenCalled();
+    expect(m.submitHandler).not.toHaveBeenCalled();
   });
 
   it('should not call onSubmit if any input value are an empty string', async () => {
-    const onSubmit = jest.fn();
-    const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByLabelText, getByText } = render(<CreateNewGame />);
 
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
@@ -89,7 +92,7 @@ describe('Testing the form functions and methods of CreatNewGame component which
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
 
     // Act
-    fireEvent.change(inputTitle, { target: { value: '' } });
+    fireEvent.input(inputTitle, { target: { value: '' } });
     fireEvent.input(inputGame, { target: { value: '' } });
     fireEvent.input(inputDiceNo, { target: { value: '' } });
 
@@ -98,12 +101,11 @@ describe('Testing the form functions and methods of CreatNewGame component which
     });
 
     // Assert
-    expect(onSubmit).not.toHaveBeenCalled();
+    expect(m.submitHandler).not.toHaveBeenCalled();
   });
 
   it('should not call onSubmit if any input value is an empty string or incorrect.', async () => {
-    const onSubmit = jest.fn();
-    const { getByLabelText, getByText } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByLabelText, getByText } = render(<CreateNewGame />);
 
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
@@ -112,7 +114,7 @@ describe('Testing the form functions and methods of CreatNewGame component which
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
 
     // Act
-    fireEvent.change(inputTitle, { target: { value: 'New Game' } });
+    fireEvent.input(inputTitle, { target: { value: 'New Game' } });
     fireEvent.input(inputGame, { target: { value: 'Settlers of Cata' } });
     fireEvent.input(inputDiceNo, { target: { value: 'a' } });
 
@@ -121,12 +123,11 @@ describe('Testing the form functions and methods of CreatNewGame component which
     });
 
     // Assert
-    expect(onSubmit).not.toHaveBeenCalled();
+    expect(m.submitHandler).not.toHaveBeenCalled();
   });
 
   it('should call onSubmit form method when submit button is clicked and all inputs are validated true.', async () => {
-    const onSubmit = jest.fn();
-    const { getByText, getByLabelText } = render(<CreateNewGame submitHandler={onSubmit} />);
+    const { getByText, getByLabelText } = render(<CreateNewGame />);
 
     // Arrange
     const button = await waitForElement(() => getByText('Starta spel'));
@@ -135,8 +136,7 @@ describe('Testing the form functions and methods of CreatNewGame component which
     const inputDiceNo = await waitForElement(() => getByLabelText('Antal tärningar'));
 
     // Act
-
-    fireEvent.change(inputTitle, { target: { value: 'Awesome Game' } });
+    fireEvent.input(inputTitle, { target: { value: 'Awesome Game' } });
     fireEvent.input(inputGame, { target: { value: 'Settlers of Cata' } });
     fireEvent.input(inputDiceNo, { target: { value: '2' } });
 
@@ -145,6 +145,6 @@ describe('Testing the form functions and methods of CreatNewGame component which
     });
 
     // Assert
-    expect(onSubmit).toHaveBeenCalled();
+    expect(m.submitHandler).toHaveBeenCalled();
   });
 });

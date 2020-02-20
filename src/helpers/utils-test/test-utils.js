@@ -1,10 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './src/lib/styles';
+import { theme } from '../../lib/styles';
 
 const AllTheProviders = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <MemoryRouter>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </MemoryRouter>
+  );
 };
 
 const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options });
