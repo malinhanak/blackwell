@@ -25,7 +25,7 @@ function CreateNewGame() {
   useEffect(() => {}, [diceType]);
 
   return (
-    <Form onSubmit={handleSubmit(m.submitHandler)}>
+    <Form onSubmit={handleSubmit(m.submitHandler)} data-testid='form'>
       <Input
         type='text'
         name='title'

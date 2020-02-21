@@ -5,7 +5,7 @@ import { GlobalStyle, theme } from './lib/styles';
 import { BrowserRouter } from 'react-router-dom';
 
 import './lib';
-import { App } from './App';
+import App from './App';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
