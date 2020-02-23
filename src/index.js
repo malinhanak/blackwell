@@ -4,15 +4,18 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from './lib/styles';
 import { BrowserRouter } from 'react-router-dom';
 
+import { AuthProvider } from './context/authContext';
 import './lib';
 import App from './App';
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <GlobalStyle />
-      <App />
-    </BrowserRouter>
-  </ThemeProvider>,
+  <AuthProvider>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </AuthProvider>,
   document.getElementById('root')
 );
