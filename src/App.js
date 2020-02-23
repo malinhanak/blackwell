@@ -3,9 +3,9 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { LoadingOverlay } from './assets/Loading';
 
 // Lazy Load imports.
-const Home = () => <h1>Welcome!</h1>;
-const About = () => <h3>You are on about page</h3>;
-const Horses = () => <h3>You are on horse page</h3>;
+const Home = lazy(() => import('./views/Home'));
+const About = lazy(() => import('./views/About'));
+const Horses = lazy(() => import('./views/Horses'));
 const Layout = ({ children }) => (
   <>
     <nav>

@@ -9,7 +9,7 @@ const rotateLoader = keyframes`
 
 const LoadingIconBase = styled.span`
   color: ${(props) => props.theme.colors.accent};
-  animation: bounce 500ms alternate infinite ease;
+  animation: ${rotateLoader} 2s linear infinite;
 `;
 
 const LoadingIconFixed = styled(LoadingIconBase)`
@@ -22,7 +22,7 @@ const LoadingIconFixed = styled(LoadingIconBase)`
 const Loading = () => {
   return (
     <LoadingIconFixed>
-      <FontAwesomeIcon icon='dice-five' size='4x' />
+      <FontAwesomeIcon icon='fan' size='4x' />
     </LoadingIconFixed>
   );
 };
@@ -43,7 +43,7 @@ export const LoadingOverlay = () => {
   return (
     <Overlay>
       <LoadingIconBase>
-        <FontAwesomeIcon icon='dice-five' size='4x' />
+        <FontAwesomeIcon icon='fan' size='4x' />
       </LoadingIconBase>
     </Overlay>
   );
