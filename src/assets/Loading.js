@@ -9,7 +9,7 @@ const rotateLoader = keyframes`
 
 const LoadingIconBase = styled.span`
   color: ${(props) => props.theme.colors.accent};
-  animation: ${rotateLoader} 2s linear infinite;
+  animation: bounce 500ms alternate infinite ease;
 `;
 
 const LoadingIconFixed = styled(LoadingIconBase)`

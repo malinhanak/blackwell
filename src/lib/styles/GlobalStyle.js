@@ -1,11 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import { cssReset } from './cssReset';
-import { cssFonts } from './cssFonts';
 import { DicetraxBackground } from '../../assets/img';
 
 export const GlobalStyle = createGlobalStyle`
   ${cssReset}
-  ${cssFonts}
 
   * { box-sizing: border-box; }
   html {
