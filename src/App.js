@@ -3,17 +3,16 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { LoadingOverlay } from './assets/Loading';
 
 // Lazy Load imports.
-const Home = () => (
-  <nav>
-    <Link to='/about'>About</Link>
-    <Link to='/horses'>Horses</Link>
-  </nav>
-);
+const Home = () => <h1>Welcome!</h1>;
 const About = () => <h3>You are on about page</h3>;
 const Horses = () => <h3>You are on horse page</h3>;
 const Layout = ({ children }) => (
   <>
-    <h3>Welcome!</h3>
+    <nav>
+      <Link to='/'>Home</Link>
+      <Link to='/about'>About</Link>
+      <Link to='/horses'>Horses</Link>
+    </nav>
     {children}
   </>
 );
