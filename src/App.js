@@ -1,21 +1,22 @@
-import React, { lazy, Suspense } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import React, { lazy, Suspense, useContext } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { LoadingOverlay } from './assets/Loading';
+import { Menu } from './lib/styles/Nav';
+import { Navigation } from './lib/styles/Navigation';
 
 // Lazy Load imports.
 const Home = lazy(() => import('./views/Home'));
 const About = lazy(() => import('./views/About'));
 const Horses = lazy(() => import('./views/Horses'));
-const Layout = ({ children }) => (
-  <>
-    <nav>
-      <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
-      <Link to='/horses'>Horses</Link>
-    </nav>
-    {children}
-  </>
-);
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Menu letter='W' />
+      <Navigation />
+      {children}
+    </>
+  );
+};
 
 function App() {
   return (

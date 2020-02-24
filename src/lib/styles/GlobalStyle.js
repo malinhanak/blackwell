@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { cssReset } from './cssReset';
-import { DicetraxBackground } from '../../assets/img';
+import { cssHamburger } from './cssHamburger';
+import { background } from '../../assets/img';
 
 export const GlobalStyle = createGlobalStyle`
   ${cssReset}
@@ -8,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   * { box-sizing: border-box; }
   html {
     min-height: 100vh;
-    background: url(${DicetraxBackground});
+    background: url(${background});
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 16px;
@@ -21,6 +22,11 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: 'Quantico';
     color: ${(props) => props.theme.colors.font};
-    background-color: rgba(255, 255, 255, 0.6)
+    background-color: rgba(158, 55, 22, 0.2)
   }
+
+
+
+  /* TEST */
+  ${cssHamburger}
 `;
