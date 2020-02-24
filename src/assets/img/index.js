@@ -1,1 +1,1 @@
-// export { default as <export name> } from './your_url';
+export { default as background } from './background.jpg';
