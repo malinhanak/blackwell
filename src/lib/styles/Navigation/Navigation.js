@@ -1,16 +1,37 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { menuContext } from '../../context';
+import { menuContext, FirebaseContext } from '../../../helpers/context';
 
 export const NavComponent = ({ className, children }) => {
+  const { user, firebase } = useContext(FirebaseContext);
   const menu = useContext(menuContext);
+  const handleLogOut = async () => {
+    await firebase.logout();
+    menu.closeMenu();
+  };
   return (
     <section className={`${className} ${menu.isOpen && 'isOpen'}`}>
       <nav>
-        <Link to='/'>Home</Link>
-        <Link to='/about'>About</Link>
-        <Link to='/horses'>Horses</Link>
+        <Link to='/' onClick={menu.closeMenu}>
+          Home
+        </Link>
+        <Link to='/about' onClick={menu.closeMenu}>
+          About
+        </Link>
+        <Link to='/horses' onClick={menu.closeMenu}>
+          Horses
+        </Link>
+        {!user && (
+          <Link to='/login' onClick={menu.closeMenu}>
+            Login
+          </Link>
+        )}
+        {user && (
+          <Link to='/' onClick={handleLogOut}>
+            Logout
+          </Link>
+        )}
       </nav>
     </section>
   );
@@ -49,5 +70,10 @@ export const Navigation = styled(NavComponent)`
     font-family: 'Montserrat';
     font-weight: 100;
     font-size: 2rem;
+  }
+
+  nav > a:last-of-type {
+    font-size: 0.7rem;
+    margin-top: 2rem;
   }
 `;

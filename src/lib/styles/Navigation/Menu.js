@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Crown } from '../../components';
-import { menuContext } from '../../context';
+import { Crown } from '../../../components';
+import { menuContext } from '../../../helpers/context';
 
 const MenuElement = styled.div`
   display: flex;
@@ -37,8 +37,8 @@ const MenuComponent = ({ className, children, letter }) => {
         className={`hamburger hamburger--collapse ${menu.isOpen && 'is-active'}`}
         onClick={() => menu.toggleMenu()}
       >
-        <span class='hamburger-box'>
-          <span class='hamburger-inner'></span>
+        <span className='hamburger-box'>
+          <span className='hamburger-inner'></span>
         </span>
       </button>
     </section>

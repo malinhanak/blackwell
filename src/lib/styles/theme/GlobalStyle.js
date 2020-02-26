@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { cssReset } from './cssReset';
-import { cssHamburger } from './cssHamburger';
-import { background } from '../../assets/img';
+import { cssReset, cssHamburger } from '../css';
+import { background } from '../../../assets/img';
 
 export const GlobalStyle = createGlobalStyle`
   ${cssReset}
@@ -20,13 +19,14 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     padding: 0;
     margin: 0;
-    font-family: 'Quantico';
+    font-family: 'Montserrat';
+    font-weight: 200;
     color: ${(props) => props.theme.colors.font};
     background-color: rgba(158, 55, 22, 0.2)
   }
 
 
 
-  /* TEST */
+  /* Menu animated button css */
   ${cssHamburger}
 `;

@@ -49,8 +49,7 @@ export const InputWrapper = styled.div`
     font-size: 0.8rem;
   }
   .label {
-    font-size: 1.375rem;
-    color: ${(props) => props.color || props.theme.colors.main};
+    color: ${(props) => props.color || props.theme.colors.label};
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
