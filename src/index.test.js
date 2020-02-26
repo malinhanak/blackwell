@@ -8,7 +8,7 @@ describe('test app', () => {
     const { debug, getByText } = render(<App />);
 
     //debug();
-    const h1Element = await waitForElement(() => getByText(/Hello DiceTrax!/i));
+    const h1Element = await waitForElement(() => getByText(/Welcome!/i));
     expect(h1Element).toBeInTheDocument();
   });
 });

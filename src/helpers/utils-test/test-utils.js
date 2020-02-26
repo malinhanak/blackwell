@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../lib/styles';
+import { siteTheme } from '../../lib/styles';
 
 const AllTheProviders = ({ children }) => {
   return (
     <MemoryRouter>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={siteTheme}>{children}</ThemeProvider>
     </MemoryRouter>
   );
 };
