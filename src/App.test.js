@@ -12,15 +12,15 @@ describe('Testing the application routing', () => {
     // Act
 
     // Assert
-    expect(firstPage).toHaveTextContent('Hello DiceTrax!');
+    expect(firstPage).toHaveTextContent('Welcome!');
 
     // Act
-    fireEvent.click(getByText('Nytt spel'));
+    fireEvent.click(getByText('About'));
 
     // Arrange
-    const NewGameForm = await waitForElement(() => getByTestId('form'));
+    const aboutpage = await waitForElement(() => getByTestId('about-page'));
 
     // Assert
-    expect(NewGameForm).toHaveTextContent('Titel');
+    expect(aboutpage).toHaveTextContent('You are on about page');
   });
 });
