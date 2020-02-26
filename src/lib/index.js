@@ -1,1 +1,1 @@
-export { default as library } from './fontAwesome'
+export { library } from './fontawesome';
