@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
-import { setTimeout } from 'core-js';
+import React, { useEffect, useContext } from 'react';
+import { menuContext } from '../helpers/context';
 
 function About() {
+  const menu = useContext(menuContext);
   useEffect(() => {
-    setTimeout(() => {
-      console.log('loaded');
-    }, 15000);
-
-    return () => clearTimeout();
+    menu.currentPage('About');
   }, []);
-  return <h3>You are on about page</h3>;
+  return <h3 data-testid='about-page'>You are on about page</h3>;
 }
 
 export default About;
