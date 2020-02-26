@@ -11,7 +11,7 @@ module.exports = {
   devServer: {
     contentBase: PATH_DIST,
     host: 'localhost',
-    port: 8181,
+    port: 8080,
     historyApiFallback: true,
     overlay: {
       errors: true,
