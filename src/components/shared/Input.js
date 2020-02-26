@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react';
-import { InputError } from '../lib/helpers';
-import { InputStyle, InputWrapper } from '../lib/styles';
+import { InputError } from '../../lib/helpers';
+import { InputStyle, InputWrapper } from '../../lib/styles';
 
 export const Input = forwardRef((props, ref) => {
   const { label, error, width, name } = props;
   return (
     <InputWrapper
-      className='input-wrapper'
       width={width || '100%'}
       noMargin={props.noMargin ? true : false}
       noMarginBottom={props.noMarginBottom ? true : false}

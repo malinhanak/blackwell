@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { InputError } from '../lib/helpers';
-import { InputStyle, InputWrapper, Datalist } from '../lib/styles';
+import { InputError } from '../../lib/helpers';
+import { InputStyle, InputWrapper, Datalist } from '../../lib/styles';
 
 export const InputWithDatalist = forwardRef((props, ref) => {
   const { label, error, width, name, listArray } = props;
