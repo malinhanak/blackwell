@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { FirebaseContext, menuContext } from '../helpers/context';
+import { FirebaseContext, MenuContext } from '../helpers/context';
 
 function Home() {
   const { user } = useContext(FirebaseContext);
-  const menu = useContext(menuContext);
+  const menu = useContext(MenuContext);
   useEffect(() => {
     menu.currentPage('Wessex Royal');
   }, []);

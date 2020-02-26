@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Crown } from '../../../components';
-import { menuContext } from '../../../helpers/context';
+import { MenuContext } from '../../../helpers/context';
 
 const MenuElement = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const MenuElement = styled.div`
 `;
 
 const MenuComponent = ({ className, children, letter }) => {
-  const menu = useContext(menuContext);
+  const menu = useContext(MenuContext);
   return (
     <section className={className}>
       <MenuElement>

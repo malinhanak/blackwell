@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { menuContext, FirebaseContext } from '../helpers/context';
+import { MenuContext, FirebaseContext } from '../helpers/context';
 import { Input } from '../components/shared';
 import { emailPattern } from '../assets/patterns';
 import { GeneralButton } from '../lib/styles';
 
 function Login() {
   const { register, handleSubmit, triggerValidation, errors } = useForm();
-  const menu = useContext(menuContext);
+  const menu = useContext(MenuContext);
   const { user, firebase } = useContext(FirebaseContext);
   console.log(user, firebase);
   useEffect(() => {

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { menuContext, FirebaseContext } from '../../../helpers/context';
+import { MenuContext, FirebaseContext } from '../../../helpers/context';
 
 export const NavComponent = ({ className, children }) => {
   const { user, firebase } = useContext(FirebaseContext);
-  const menu = useContext(menuContext);
+  const menu = useContext(MenuContext);
   const handleLogOut = async () => {
     await firebase.logout();
     menu.closeMenu();

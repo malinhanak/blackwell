@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { Menu, Navigation } from '../';
-import { menuContext } from '../../../helpers/context';
+import { MenuContext } from '../../../helpers/context';
 
 export const Layout = ({ className, children }) => {
-  const menu = useContext(menuContext);
+  const menu = useContext(MenuContext);
   return (
     <>
       <Menu letter='W' />

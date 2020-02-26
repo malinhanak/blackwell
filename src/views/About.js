@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { menuContext } from '../helpers/context';
+import { MenuContext } from '../helpers/context';
 
 function About() {
-  const menu = useContext(menuContext);
+  const menu = useContext(MenuContext);
   useEffect(() => {
     menu.currentPage('About');
   }, []);

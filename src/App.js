@@ -11,6 +11,7 @@ const Home = lazy(() => import('./views/Home'));
 const About = lazy(() => import('./views/About'));
 const Horses = lazy(() => import('./views/Horses'));
 const Login = lazy(() => import('./views/Login'));
+const Horse = lazy(() => import('./views/Horse'));
 
 function App() {
   const user = useAuth();
@@ -24,6 +25,7 @@ function App() {
               <Route path='/about' component={About} />
               <Route path='/horses' component={Horses} />
               <Route path='/login' component={Login} />
+              <Route path='/horse/1' component={Horse} />
               <Route render={() => <h1>404 page</h1>} />
             </Switch>
           </Suspense>
